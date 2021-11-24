@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scrollable_widgets/utils/constant/extensions.dart';
+import 'package:scrollable_widgets/utils/constant/lists.dart';
 import 'package:scrollable_widgets/utils/constant/my_color.dart';
 
 class SCSilver extends StatelessWidget {
