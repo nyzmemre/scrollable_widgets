@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:scrollable_widgets/utils/constant/lists.dart';
+import 'package:scrollable_widgets/utils/my_widgets/details.dart';
 import 'package:scrollable_widgets/view_model/shoes_view_model.dart';
 
 class SCSGridView extends StatelessWidget {
@@ -15,11 +16,26 @@ class SCSGridView extends StatelessWidget {
           crossAxisCount: 4,
           itemCount: images.length,
           itemBuilder: (BuildContext context, int index) => Card(
-            child: Column(
-              children: <Widget>[
-                Image.network(ShoesViewModel.instance.shoesSGridList[index].url),
-                Text("Price : ${ShoesViewModel.instance.shoesSGridList[index].price} \$"),
-              ],
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Details(
+                            heroTag: ShoesViewModel.instance
+                                .shoesSGridList[index].shoesTag,
+                            list:
+                            ShoesViewModel.instance.shoesSGridList,
+                            index: index)));
+              },
+              child: Column(
+                children: <Widget>[
+                  Hero(
+                      tag: ShoesViewModel.instance.shoesSGridList[index].shoesTag,
+                      child: Image.network(ShoesViewModel.instance.shoesSGridList[index].url)),
+                  Text("Price : ${ShoesViewModel.instance.shoesSGridList[index].price} \$"),
+                ],
+              ),
             ),
           ),
           staggeredTileBuilder: (int index) =>

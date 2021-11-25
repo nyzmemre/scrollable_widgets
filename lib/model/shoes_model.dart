@@ -2,7 +2,7 @@ class ShoesModel {
   String url;
   double price;
   String details;
-  String shoesKey;
+  String shoesTag;
 
-  ShoesModel(this.url, this.price, this.details, this.shoesKey);
+  ShoesModel(this.url, this.price, this.details, this.shoesTag);
 }
