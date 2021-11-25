@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:scrollable_widgets/screens/sc_gridview.dart';
-import 'package:scrollable_widgets/screens/sc_silver.dart';
-import 'package:scrollable_widgets/utils/my_widgets/my_appbar.dart';
-import 'package:scrollable_widgets/utils/my_widgets/my_bottombar.dart';
 
-import 'screens/sc_sgridview.dart';
+import 'view/sc_silver.dart';
+import 'view/sc_gridview.dart';
+import 'view/sc_sgridview.dart';
+import 'utils/my_widgets/my_bottombar.dart';
+
 
 void main() {
   runApp(HomePage());
