@@ -1,4 +1,4 @@
-import 'package:scrollable_widgets/models/shoes_model.dart';
+import 'package:scrollable_widgets/model/shoes_model.dart';
 import 'package:scrollable_widgets/utils/constant/lists.dart';
 
 class ShoesViewModel{
@@ -29,4 +29,14 @@ class ShoesViewModel{
     ShoesModel(images[10], 10, "Gommino driving shoes in elegant leather with branded metal strap and D ring buckle, stamped Tod's monogram, rubber detailing on the heel and iconic rubber outsole.", "sgrid10"),
     ShoesModel(images[11], 25, "Gommino driving shoes in elegant leather with branded metal strap and D ring buckle, stamped Tod's monogram, rubber detailing on the heel and iconic rubber outsole.", "sgrid11"),
   ];
+
+ List<ShoesModel> get shoesGridList=>_shoesGridList;
+ List<ShoesModel> get shoesSGridList=>_shoesSGridList;
+
+ static ShoesViewModel? _instance;
+ static ShoesViewModel get instance{
+   if(_instance==null) _instance=ShoesViewModel._init();
+   return _instance!;
+ }
+ ShoesViewModel._init();
 }
