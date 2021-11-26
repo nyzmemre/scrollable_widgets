@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:scrollable_widgets/model/shoes_model.dart';
 import 'package:scrollable_widgets/utils/constant/lists.dart';
 
-class ShoesViewModel{
+class ShoesViewModel extends ChangeNotifier{
   List<ShoesModel> _shoesGridList=[
     ShoesModel(gridImages[0], 25, "Gommino driving shoes in elegant leather with branded metal strap and D ring buckle, stamped Tod's monogram, rubber detailing on the heel and iconic rubber outsole.", "grid0"),
     ShoesModel(gridImages[1], 15, "Gommino driving shoes in elegant leather with branded metal strap and D ring buckle, stamped Tod's monogram, rubber detailing on the heel and iconic rubber outsole.", "grid1"),

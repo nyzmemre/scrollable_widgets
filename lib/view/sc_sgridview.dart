@@ -37,6 +37,7 @@ class SCSGridView extends StatelessWidget {
                           fit: BoxFit.fill,
                           errorBuilder: (BuildContext context, Object exception,
                               StackTrace? stackTrace) {
+
                             return const CircularProgressIndicator();
                           },
                           loadingBuilder: (BuildContext context, Widget child,
