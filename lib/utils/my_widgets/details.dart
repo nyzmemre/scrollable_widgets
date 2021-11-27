@@ -19,6 +19,8 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Color> _colorList=[kPink, kBrown, kBlack, kTurquoise, kTYellow];
+    List<int> _sizeChart=[7,8,9,10,11,12];
     return SafeArea(
       child: Scaffold(
         body: ListView(
@@ -72,11 +74,10 @@ class Details extends StatelessWidget {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                  itemCount: 5,
+                  itemCount: _colorList.length,
                   itemBuilder: (context, int index){
                 return CircleAvatar(
-                  child: Icon(Icons.done),
-                  foregroundColor: Colors.teal,
+                  backgroundColor: _colorList[index],
                 );
               }),
             ),
@@ -86,10 +87,10 @@ class Details extends StatelessWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: 6,
+                  itemCount: _sizeChart.length,
                   itemBuilder: (context, int index){return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Text("${index+7}"),
+                    child: Text("${_sizeChart[index]}"),
                   );}),
             ),
             Text("Quantity"),
