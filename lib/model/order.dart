@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-
+class ColorModel{
+  bool isSelected;
+  Color color;
+  ColorModel(this.isSelected, this.color);
+}
 class Order{
   Color? color;
   int? sizeChart;
