@@ -12,7 +12,14 @@ class OrderViewModel extends ChangeNotifier {
     ColorModel(false, kTurquoise),
     ColorModel(false, kTYellow)
   ];
-  List<int> _sizeChart = [7, 8, 9, 10, 11, 12];
+  List<SizeModel> _sizeChart = [
+    SizeModel(false, 7),
+    SizeModel(false, 8),
+    SizeModel(false, 9),
+    SizeModel(false, 10),
+    SizeModel(false, 11),
+    SizeModel(false, 12)
+  ];
 
   increaseQuantity() {
     quantity++;
@@ -27,14 +34,15 @@ class OrderViewModel extends ChangeNotifier {
 
   List<Order> get orderDetails => _orderDetails;
 
-  isSelected(int index){
-    for(int i=0; i<_colorList.length; i++ ){
-      _colorList[i].isSelected=false;
+  isSelected(int index, List<dynamic> list) {
+    for (int i = 0; i < list.length; i++) {
+      list[i].isSelected = false;
     }
-    _colorList[index].isSelected=!_colorList[index].isSelected;
-notifyListeners();
+    list[index].isSelected = !list[index].isSelected;
+    notifyListeners();
   }
 
-
   List<ColorModel> get colorList => _colorList;
+
+  List<SizeModel> get sizeChart => _sizeChart;
 }

@@ -20,8 +20,7 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Color> _colorList = [kPink, kBrown, kBlack, kTurquoise, kTYellow];
-    List<int> _sizeChart = [7, 8, 9, 10, 11, 12];
+
     return SafeArea(
       child: Consumer<OrderViewModel>(builder: (context, data, w) {
         return Scaffold(
@@ -75,11 +74,11 @@ class Details extends StatelessWidget {
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount: _colorList.length,
+                    itemCount:data.colorList.length,
                     itemBuilder: (context, int index) {
                       return InkWell(
                         onTap: () {
-                          data.isSelected(index);
+                          data.isSelected(index, data.colorList);
                         },
                         child: (data.colorList[index].isSelected)
                             ? AnimatedContainer(
@@ -101,11 +100,28 @@ class Details extends StatelessWidget {
                 child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemCount: _sizeChart.length,
+                    itemCount: data.sizeChart.length,
                     itemBuilder: (context, int index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Text("${_sizeChart[index]}"),
+                        child: InkWell(
+                            onTap: (){
+                              data.isSelected(index, data.sizeChart);
+                            },
+                            child: (data.sizeChart[index].isSelected) ? Container(
+alignment: Alignment.center,
+                                decoration: BoxDecoration(
+
+                                  shape: BoxShape.circle,
+                                  border: Border.all(width: 1)
+                                ),
+                                child: Padding(
+                                  padding: context.lowPadding,
+                                  child: Text("${data.sizeChart[index].size}", textAlign: TextAlign.center,),
+                                )) : Padding(
+                                  padding: context.lowPadding,
+                                  child: Text("${data.sizeChart[index].size}", textAlign: TextAlign.center,),
+                                )),
                       );
                     }),
               ),
@@ -121,15 +137,27 @@ class Details extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      context.horFifteenSizedBox,
                       counter(data.decreaseQuantity, "-"),
                       context.horFifteenSizedBox,
                       Text("${data.quantity}"),
                       context.horFifteenSizedBox,
                       counter(data.increaseQuantity, "+"),
+                      context.horFifteenSizedBox,
+
                     ],
                   ),
                 ),
-              )
+              ),
+              ElevatedButton(
+                  onPressed: (){},
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    elevation: 15.0,
+                  ),
+                  child: Text("Add to Cart"))
             ],
           ),
         );
