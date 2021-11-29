@@ -42,6 +42,34 @@ class OrderViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  addToCard(){
+    Color? newColor;
+    int? newSizeChart;
+
+    for(int i=0; i<_colorList.length;i++){
+      if(_colorList[i].isSelected)
+        newColor=_colorList[i].color;
+    }
+    for(int i=0; i<_sizeChart.length;i++){
+      if(_sizeChart[i].isSelected)
+        newSizeChart=_sizeChart[i].size;
+    }
+    if(newColor!=null && newSizeChart!=null){
+      _orderDetails=[
+        Order(newColor, newSizeChart, quantity, 1, "url"),
+      ];
+    } else{
+      _orderDetails=[
+        Order(Colors.white, 1999, quantity, 0, "")
+      ];
+    }
+
+    print(_orderDetails[0].sizeChart);
+    print(_orderDetails[0].color);
+    print(quantity);
+   notifyListeners();
+  }
+
   List<ColorModel> get colorList => _colorList;
 
   List<SizeModel> get sizeChart => _sizeChart;

@@ -150,7 +150,7 @@ alignment: Alignment.center,
                 ),
               ),
               ElevatedButton(
-                  onPressed: (){},
+                  onPressed: data.addToCard,
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
