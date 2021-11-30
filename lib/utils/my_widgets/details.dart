@@ -164,7 +164,7 @@ class Details extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => OrderDetail(
-                                  imgURL: data.orderDetails[0].url,
+                                  imgURL: list[index].url,
                                   color: data.orderDetails[0].color,
                                   sizeChart: data.orderDetails[0].sizeChart,
                                   quantity: data.orderDetails[0].quantity)));
@@ -175,7 +175,8 @@ class Details extends StatelessWidget {
                     ),
                     elevation: 15.0,
                   ),
-                  child: Text("Add to Cart"))
+                  child: Text("Add to Cart")),
+
             ],
           ),
         );
