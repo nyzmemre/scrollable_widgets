@@ -32,7 +32,7 @@ class OrderViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<Order> get orderDetails => _orderDetails;
+
 
   isSelected(int index, List<dynamic> list) {
     for (int i = 0; i < list.length; i++) {
@@ -56,11 +56,11 @@ class OrderViewModel extends ChangeNotifier {
     }
     if(newColor!=null && newSizeChart!=null){
       _orderDetails=[
-        Order(newColor, newSizeChart, quantity, 1, "url"),
+        Order("", newColor, newSizeChart, quantity, 1),
       ];
     } else{
       _orderDetails=[
-        Order(Colors.white, 1999, quantity, 0, "")
+        Order("",Colors.white, 1999, quantity, 0, )
       ];
     }
 
@@ -69,6 +69,7 @@ class OrderViewModel extends ChangeNotifier {
     print(quantity);
    notifyListeners();
   }
+  List<Order> get orderDetails => _orderDetails;
 
   List<ColorModel> get colorList => _colorList;
 

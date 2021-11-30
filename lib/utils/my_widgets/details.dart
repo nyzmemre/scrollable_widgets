@@ -4,6 +4,7 @@ import 'package:scrollable_widgets/model/shoes_model.dart';
 import 'package:scrollable_widgets/utils/components/detail_card.dart';
 import 'package:scrollable_widgets/utils/constant/extensions.dart';
 import 'package:scrollable_widgets/utils/constant/my_color.dart';
+import 'package:scrollable_widgets/view/order_detail.dart';
 import 'package:scrollable_widgets/view_model/order_view_model.dart';
 
 class Details extends StatelessWidget {
@@ -20,7 +21,6 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Consumer<OrderViewModel>(builder: (context, data, w) {
         return Scaffold(
@@ -74,7 +74,7 @@ class Details extends StatelessWidget {
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount:data.colorList.length,
+                    itemCount: data.colorList.length,
                     itemBuilder: (context, int index) {
                       return InkWell(
                         onTap: () {
@@ -84,9 +84,11 @@ class Details extends StatelessWidget {
                             ? AnimatedContainer(
                                 child: CircleAvatar(
                                   backgroundColor: data.colorList[index].color,
-                                  child: Icon(Icons.done, color: kWhite,),
+                                  child: Icon(
+                                    Icons.done,
+                                    color: kWhite,
+                                  ),
                                 ),
-
                                 duration: Duration(seconds: 1))
                             : CircleAvatar(
                                 backgroundColor: data.colorList[index].color,
@@ -105,23 +107,29 @@ class Details extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: InkWell(
-                            onTap: (){
+                            onTap: () {
                               data.isSelected(index, data.sizeChart);
                             },
-                            child: (data.sizeChart[index].isSelected) ? Container(
-alignment: Alignment.center,
-                                decoration: BoxDecoration(
-
-                                  shape: BoxShape.circle,
-                                  border: Border.all(width: 1)
-                                ),
-                                child: Padding(
-                                  padding: context.lowPadding,
-                                  child: Text("${data.sizeChart[index].size}", textAlign: TextAlign.center,),
-                                )) : Padding(
-                                  padding: context.lowPadding,
-                                  child: Text("${data.sizeChart[index].size}", textAlign: TextAlign.center,),
-                                )),
+                            child: (data.sizeChart[index].isSelected)
+                                ? Container(
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(width: 1)),
+                                    child: Padding(
+                                      padding: context.lowPadding,
+                                      child: Text(
+                                        "${data.sizeChart[index].size}",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ))
+                                : Padding(
+                                    padding: context.lowPadding,
+                                    child: Text(
+                                      "${data.sizeChart[index].size}",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  )),
                       );
                     }),
               ),
@@ -144,13 +152,23 @@ alignment: Alignment.center,
                       context.horFifteenSizedBox,
                       counter(data.increaseQuantity, "+"),
                       context.horFifteenSizedBox,
-
                     ],
                   ),
                 ),
               ),
               ElevatedButton(
-                  onPressed: data.addToCard,
+                  onPressed: () {
+                    data.addToCard();
+                    if (data.orderDetails[0].url != null)
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => OrderDetail(
+                                  imgURL: data.orderDetails[0].url,
+                                  color: data.orderDetails[0].color,
+                                  sizeChart: data.orderDetails[0].sizeChart,
+                                  quantity: data.orderDetails[0].quantity)));
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),

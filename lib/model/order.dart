@@ -5,13 +5,14 @@ class ColorModel{
   ColorModel(this.isSelected, this.color);
 }
 class Order{
+  String? url;
   Color? color;
   int? sizeChart;
   int? quantity;
   double? price;
-  String? url;
 
-  Order(this.color, this.sizeChart, this.quantity, this.price, this.url);
+
+  Order(this.url, this.color, this.sizeChart, this.quantity, this.price, );
 }
 
 class SizeModel{
