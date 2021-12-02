@@ -69,6 +69,12 @@ class OrderViewModel extends ChangeNotifier {
     print(quantity);
    notifyListeners();
   }
+
+  cleanSelected(){
+    quantity=1;
+
+  }
+
   List<Order> get orderDetails => _orderDetails;
 
   List<ColorModel> get colorList => _colorList;
