@@ -9,6 +9,7 @@ extension ExtensionMediaQuery on BuildContext{
   double get width=>mediaQuery.size.width;
 
   double get zeroVal=>height*0.0;
+  double get veryLowVal=>height*0.005;
   double get lowVal=>height*0.01;
   double get normalVal=>height*0.02;
   double get highVal=>height*0.04;
@@ -19,6 +20,7 @@ extension ExtensionMediaQuery on BuildContext{
 
 extension ExtensionPadding on BuildContext{
   EdgeInsets get zeroPadding=>EdgeInsets.all(zeroVal);
+  EdgeInsets get veryLowPadding=>EdgeInsets.all(veryLowVal);
   EdgeInsets get lowPadding=>EdgeInsets.all(lowVal);
   EdgeInsets get normalPadding=>EdgeInsets.all(normalVal);
   EdgeInsets get highPadding=>EdgeInsets.all(highVal);
@@ -27,6 +29,7 @@ extension ExtensionPadding on BuildContext{
   EdgeInsets get verticalPadding=>EdgeInsets.symmetric(vertical: normalVal);
   EdgeInsets get horizontalHighPadding=>EdgeInsets.symmetric(horizontal: horizantalHighVal);
   EdgeInsets get horizontalPadding=>EdgeInsets.symmetric(horizontal: highVal);
+  EdgeInsets get horizontalVeryLowPadding=>EdgeInsets.symmetric(horizontal: veryLowVal);
 
 }
 
