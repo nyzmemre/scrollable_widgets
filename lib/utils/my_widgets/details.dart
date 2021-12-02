@@ -35,7 +35,7 @@ class Details extends StatelessWidget {
                   tag: heroTag,
                   child: topImage(),
                 ),
-                myArrowButton(context),
+                myArrowButton(context, data),
               ]),
               context.fiveSizedBox,
               DetailCard(text: "\$ ${list[index].price}"),
@@ -85,14 +85,17 @@ class Details extends StatelessWidget {
     );
   }
 
-  Positioned myArrowButton(BuildContext context) {
+  Positioned myArrowButton(BuildContext context, OrderViewModel data) {
     return Positioned(
       top: 10,
       left: 10,
       child: CircleAvatar(
           backgroundColor: kWhite.withOpacity(0.3),
           child: IconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              Navigator.pop(context);
+              data.cleanSelected();
+            },
             icon: Icon(
               Icons.arrow_back,
               color: kBlack,
